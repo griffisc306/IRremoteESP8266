@@ -242,7 +242,7 @@ const PROGMEM char *kAllProtocolNamesStr =
     D_STR_GOODWEATHER "\x0"
     D_STR_INAX "\x0"
     D_STR_DAIKIN160 "\x0"
-    D_STR_NEOCLIMA "\x0"
+    D_STR_SOLEUS "\x0"
     D_STR_DAIKIN176 "\x0"
     D_STR_DAIKIN128 "\x0"
     D_STR_AMCOR "\x0"

@@ -32,7 +32,7 @@
 #include "ir_Midea.h"
 #include "ir_Mitsubishi.h"
 #include "ir_MitsubishiHeavy.h"
-#include "ir_Neoclima.h"
+#include "ir_Soleus.h"
 #include "ir_Panasonic.h"
 #include "ir_Samsung.h"
 #include "ir_Sanyo.h"
@@ -232,8 +232,8 @@ bool IRac::isProtocolSupported(const decode_type_t protocol) {
     case decode_type_t::MITSUBISHI_HEAVY_88:
     case decode_type_t::MITSUBISHI_HEAVY_152:
 #endif
-#if SEND_NEOCLIMA
-    case decode_type_t::NEOCLIMA:
+#if SEND_SOLEUS
+    case decode_type_t::SOLEUS:
 #endif
 #if SEND_PANASONIC_AC
     case decode_type_t::PANASONIC_AC:
@@ -1484,9 +1484,9 @@ void IRac::mitsubishiHeavy152(IRMitsubishiHeavy152Ac *ac,
 }
 #endif  // SEND_MITSUBISHIHEAVY
 
-#if SEND_NEOCLIMA
-/// Send a Neoclima A/C message with the supplied settings.
-/// @param[in, out] ac A Ptr to an IRNeoclimaAc object to use.
+#if SEND_SOLEUS
+/// Send a Soleus A/C message with the supplied settings.
+/// @param[in, out] ac A Ptr to an IRSoleusAc object to use.
 /// @param[in] on The power setting.
 /// @param[in] mode The operation mode setting.
 /// @param[in] degrees The temperature setting in degrees.
@@ -1497,7 +1497,7 @@ void IRac::mitsubishiHeavy152(IRMitsubishiHeavy152Ac *ac,
 /// @param[in] light Turn on the LED/Display mode.
 /// @param[in] filter Turn on the (ion/pollen/etc) filter mode.
 /// @param[in] sleep Nr. of minutes for sleep mode. -1 is Off, > 0 is on.
-void IRac::neoclima(IRNeoclimaAc *ac,
+void IRac::soleus(IRSoleusAc *ac,
                     const bool on, const stdAc::opmode_t mode,
                     const float degrees, const stdAc::fanspeed_t fan,
                     const stdAc::swingv_t swingv, const stdAc::swingh_t swingh,
@@ -1521,7 +1521,7 @@ void IRac::neoclima(IRNeoclimaAc *ac,
   ac->setPower(on);
   ac->send();
 }
-#endif  // SEND_NEOCLIMA
+#endif  // SEND_SOLEUS
 
 #if SEND_PANASONIC_AC
 /// Send a Panasonic A/C message with the supplied settings.
@@ -2357,15 +2357,15 @@ bool IRac::sendAc(const stdAc::state_t desired, const stdAc::state_t *prev) {
       break;
     }
 #endif  // SEND_MITSUBISHIHEAVY
-#if SEND_NEOCLIMA
-    case NEOCLIMA:
+#if SEND_SOLEUS
+    case SOLEUS:
     {
-      IRNeoclimaAc ac(_pin, _inverted, _modulation);
-      neoclima(&ac, send.power, send.mode, degC, send.fanspeed, send.swingv,
+      IRSoleusAc ac(_pin, _inverted, _modulation);
+      soleus(&ac, send.power, send.mode, degC, send.fanspeed, send.swingv,
                send.swingh, send.turbo, send.light, send.filter, send.sleep);
       break;
     }
-#endif  // SEND_NEOCLIMA
+#endif  // SEND_SOLEUS
 #if SEND_PANASONIC_AC
     case PANASONIC_AC:
     {
@@ -2968,13 +2968,13 @@ namespace IRAcUtils {
         return ac.toString();
       }
 #endif  // DECODE_MITSUBISHIHEAVY
-#if DECODE_NEOCLIMA
-      case decode_type_t::NEOCLIMA: {
-        IRNeoclimaAc ac(kGpioUnused);
+#if DECODE_SOLEUS
+      case decode_type_t::SOLEUS: {
+        IRSoleusAc ac(kGpioUnused);
         ac.setRaw(result->state);
         return ac.toString();
       }
-#endif  // DECODE_NEOCLIMA
+#endif  // DECODE_SOLEUS
 #if DECODE_TOSHIBA_AC
       case decode_type_t::TOSHIBA_AC: {
         IRToshibaAC ac(kGpioUnused);
@@ -3433,14 +3433,14 @@ namespace IRAcUtils {
         break;
       }
 #endif  // DECODE_MITSUBISHIHEAVY
-#if DECODE_NEOCLIMA
-      case decode_type_t::NEOCLIMA: {
-        IRNeoclimaAc ac(kGpioUnused);
+#if DECODE_SOLEUS
+      case decode_type_t::SOLEUS: {
+        IRSoleusAc ac(kGpioUnused);
         ac.setRaw(decode->state);
         *result = ac.toCommon();
         break;
       }
-#endif  // DECODE_NEOCLIMA
+#endif  // DECODE_SOLEUS
 #if DECODE_PANASONIC_AC
       case decode_type_t::PANASONIC_AC: {
         IRPanasonicAc ac(kGpioUnused);

@@ -572,12 +572,12 @@
 #define SEND_DAIKIN160         _IR_ENABLE_DEFAULT_
 #endif  // SEND_DAIKIN160
 
-#ifndef DECODE_NEOCLIMA
-#define DECODE_NEOCLIMA        _IR_ENABLE_DEFAULT_
-#endif  // DECODE_NEOCLIMA
-#ifndef SEND_NEOCLIMA
-#define SEND_NEOCLIMA          _IR_ENABLE_DEFAULT_
-#endif  // SEND_NEOCLIMA
+#ifndef DECODE_SOLEUS
+#define DECODE_SOLEUS        _IR_ENABLE_DEFAULT_
+#endif  // DECODE_SOLEUS
+#ifndef SEND_SOLEUS
+#define SEND_SOLEUS          _IR_ENABLE_DEFAULT_
+#endif  // SEND_SOLEUS
 
 #ifndef DECODE_DAIKIN176
 #define DECODE_DAIKIN176       _IR_ENABLE_DEFAULT_
@@ -692,7 +692,7 @@
      DECODE_PANASONIC_AC || DECODE_MWM || DECODE_DAIKIN2 || \
      DECODE_VESTEL_AC || DECODE_TCL112AC || DECODE_MITSUBISHIHEAVY || \
      DECODE_DAIKIN216 || DECODE_SHARP_AC || DECODE_DAIKIN160 || \
-     DECODE_NEOCLIMA || DECODE_DAIKIN176 || DECODE_DAIKIN128 || \
+     DECODE_SOLEUS || DECODE_DAIKIN176 || DECODE_DAIKIN128 || \
      DECODE_AMCOR || DECODE_DAIKIN152 || DECODE_MITSUBISHI136 || \
      DECODE_MITSUBISHI112 || DECODE_HITACHI_AC424 || DECODE_HITACHI_AC3 || \
      DECODE_HITACHI_AC344 || DECODE_CORONA_AC || DECODE_SANYO_AC || \
@@ -801,7 +801,7 @@ enum decode_type_t {
   GOODWEATHER,
   INAX,
   DAIKIN160,  // 65
-  NEOCLIMA,
+  SOLEUS,
   DAIKIN176,
   DAIKIN128,
   AMCOR,
@@ -973,9 +973,9 @@ const uint16_t kMultibracketsBits = 8;
 const uint16_t kMultibracketsDefaultRepeat = kSingleRepeat;
 const uint16_t kNikaiBits = 24;
 const uint16_t kNECBits = 32;
-const uint16_t kNeoclimaStateLength = 12;
-const uint16_t kNeoclimaBits = kNeoclimaStateLength * 8;
-const uint16_t kNeoclimaMinRepeat = kNoRepeat;
+const uint16_t kSoleusStateLength = 12;
+const uint16_t kSoleusBits = kSoleusStateLength * 8;
+const uint16_t kSoleusMinRepeat = kNoRepeat;
 const uint16_t kPanasonicBits = 48;
 const uint32_t kPanasonicManufacturer = 0x4004;
 const uint16_t kPanasonicAcStateLength = 27;

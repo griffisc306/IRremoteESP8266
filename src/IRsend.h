@@ -589,11 +589,11 @@ class IRsend {
   void sendLegoPf(const uint64_t data, const uint16_t nbits = kLegoPfBits,
                   const uint16_t repeat = kLegoPfMinRepeat);
 #endif
-#if SEND_NEOCLIMA
-  void sendNeoclima(const unsigned char data[],
-                    const uint16_t nbytes = kNeoclimaStateLength,
-                    const uint16_t repeat = kNeoclimaMinRepeat);
-#endif  // SEND_NEOCLIMA
+#if SEND_SOLEUS
+  void sendSoleus(const unsigned char data[],
+                    const uint16_t nbytes = kSoleusStateLength,
+                    const uint16_t repeat = kSoleusMinRepeat);
+#endif  // SEND_SOLEUS
 #if SEND_AMCOR
   void sendAmcor(const unsigned char data[],
                  const uint16_t nbytes = kAmcorStateLength,

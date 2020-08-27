@@ -717,10 +717,10 @@ uint16_t IRsend::defaultBits(const decode_type_t protocol) {
       return kMitsubishiHeavy152Bits;
     case MITSUBISHI_HEAVY_88:
       return kMitsubishiHeavy88Bits;
-    case NEOCLIMA:
-      return kNeoclimaBits;
+    case SOLEUS:
+      return kSoleusBits;
     case PANASONIC_AC:
-      return kNeoclimaBits;
+      return kSoleusBits;
     case SAMSUNG_AC:
       return kSamsungAcBits;
     case SANYO_AC:
@@ -1153,11 +1153,11 @@ bool IRsend::send(const decode_type_t type, const uint8_t *state,
       sendMWM(state, nbytes);
       break;
 #endif  // SEND_MWM
-#if SEND_NEOCLIMA
-    case NEOCLIMA:
-      sendNeoclima(state, nbytes);
+#if SEND_SOLEUS
+    case SOLEUS:
+      sendSoleus(state, nbytes);
       break;
-#endif  // SEND_NEOCLIMA
+#endif  // SEND_SOLEUS
 #if SEND_PANASONIC_AC
     case PANASONIC_AC:
       sendPanasonicAC(state, nbytes);

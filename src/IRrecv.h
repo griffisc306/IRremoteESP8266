@@ -622,11 +622,11 @@ class IRrecv {
                     const uint16_t nbits = kLegoPfBits,
                     const bool strict = true);
 #endif
-#if DECODE_NEOCLIMA
-  bool decodeNeoclima(decode_results *results, uint16_t offset = kStartOffset,
-                      const uint16_t nbits = kNeoclimaBits,
+#if DECODE_SOLEUS
+  bool decodeSoleus(decode_results *results, uint16_t offset = kStartOffset,
+                      const uint16_t nbits = kSoleusBits,
                       const bool strict = true);
-#endif  // DECODE_NEOCLIMA
+#endif  // DECODE_SOLEUS
 #if DECODE_AMCOR
   bool decodeAmcor(decode_results *results, uint16_t offset = kStartOffset,
                    const uint16_t nbits = kAmcorBits,
