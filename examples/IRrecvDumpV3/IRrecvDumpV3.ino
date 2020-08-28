@@ -34,10 +34,10 @@
 #include <Arduino.h>
 #include <assert.h>
 #include <IRrecv.h>
-#include <IRremoteESP8266.h>
-#include <IRac.h>
-#include <IRtext.h>
-#include <IRutils.h>
+#include <IRremoteESP8266-2.h>
+#include <IRac-2.h>
+#include <IRtext-2.h>
+#include <IRutils-2.h>
 
 // ==================== start of TUNEABLE PARAMETERS ====================
 // An IR detector/demodulator is connected to GPIO pin 14
